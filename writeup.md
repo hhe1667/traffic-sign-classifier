@@ -78,15 +78,15 @@ I started with the LeNet model. I examined the accuracy of the training set
 and validation set. The training set accuracy reached ~99.5% while the
 validation set accuracy stayed around 91%. The gap indicated the model was
 overfitting. Thus, I added dropout to each convolution layer. This improved
-the validation set accuracy to ~95%.
+the validation set accuracy to 95.3%.
 
-The test set accuracy 94.3% is close to that of the validation set. This gives
+The test set accuracy 94.0% is close to that of the validation set. This gives
 evidence that the validation set is representative of the test set.
 
 My final model results were:
-* training set accuracy of 99.6%
-* validation set accuracy of 95.8%
-* test set accuracy of 94.3%
+* training set accuracy of 99.7%
+* validation set accuracy of 95.3%
+* test set accuracy of 94.0%
 
 
 ### Test a Model on New Images
@@ -122,7 +122,7 @@ The pedestrians.jpg was mis-predicted as "General Caution". Comparing images of
 the two signs, it appeared that the model was confused pedestrian with the exclamation mark.
 
 For "speed-limit-30.jpeg", the top probability is 94.5% and the second top
-probability is 5.52% with class "Speed limit (80km/h)". This implies that the
+probability is 5.5% with class "Speed limit (80km/h)". This implies that the
 model is not that certain in predicting the actual speed limit.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
