@@ -28,13 +28,19 @@ You're reading it! and here is a link to my [project code](https://github.com/hh
 
 I used Pandas to calculate summary statistics of the traffic signs data set:
 
-* The sizes of training set, validation set, test set
-* The shape of a traffic sign image
-* The traffic sign class_id, label, and number of images for each class
+* The size of training set is 34799
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is (32, 32, 3)
+* The number of unique classes/labels in the data set is 43
 
 #### Exploratory visualization of the dataset.
+I plot the distribution difference among the data sets as follows.
+![Data distribution](dataset_bars.png)
 
-I then plotted example images for each of the traffic signs. The example images are randomly picked from the training set. The traffic sign id and name are plotted along with the images. See the plot in the notebook [output](https://github.com/hhe1667/traffic-sign-classifier/blob/master/Traffic_Sign_Classifier.html).
+I also plotted example images for each of the traffic signs. The example images
+are randomly picked from the training set.
+![Example traffic signs](example_image_grid.png)
 
 
 ### Design and Test a Model Architecture
@@ -93,7 +99,11 @@ My final model results were:
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are 6 traffic signs that I found on the web by Google image search:
+I downloaded 6 traffic signs on the web by Google image search. The new images are different from the training set as follows.
+* The new images are much larger 380x380 vs 32x32.
+* The new images has no background, while the training set were captured from real world.
+* The pedestrian sign contains crosswalk.
+
 
 ![no-entry.jpg](data/no-entry.jpg) ![pedestrians.jpg](data/pedestrians.jpg) ![speed-limit-30.jpeg](data/speed-limit-30.jpeg)
 ![stop_sign.jpg](data/stop_sign.jpg) ![warning.png](data/warning.png) ![yield.jpg](data/yield.jpg)
@@ -106,17 +116,27 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | no-entry.jpg     		| No entry   									| 
-| pedestrians.jpg    	| General Caution (Wrong prediction)			|
+| pedestrians.jpg    	| General Caution (**Wrong prediction**)			|
 | speed-limit-30		| Speed limit (30km/h)							|
 | stop_sign.jpg	   		| Stop 							 				|
 | warning.png			| General caution      							|
 | yield.jpg				| Yield             							|
 
 The model was able to correctly predict 5 out of 6 traffic signs, which gives an accuracy of 83%.
+ This performance is worse than the accuracy of the test set (94%). In other words, the validation and test sets
+ are not representative of the new images. Thus the model is not good enough to classify new images.
+
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The top-5 softmax probabilities and class names for each image are printed in the Jupyter notebook.
+
+| no-entry.jpg | 1.0 | 3.7178788693525977e-13 | 1.2487274037055666e-17 | 8.548082026742287e-21 | 5.472243634603315e-21 | No entry | Stop |
+| pedestrians.jpg | 0.9986525774002075 | 0.0013460007030516863 | 4.7523400326099363e-07 | 3.26870321032402e-07 | 3.013022933373577e-07 | General caution | Pedestrians |
+| speed-limit-30.jpeg | 0.9976346492767334 | 0.002359142992645502 | 3.368551688254229e-06 | 2.2627618818660267e-06 | 4.24117558850412e-07 | Speed limit (30km/h) | Speed limit (80km/h) |
+| stop_sign.jpg | 1.0 | 1.1655912679486846e-08 | 4.561031108352154e-09 | 5.856599649689542e-10 | 3.8162795146234885e-10 | Stop | Speed limit (80km/h) |
+| warning.png | 0.9999949932098389 | 4.098328645341098e-06 | 9.309649726674252e-07 | 1.486771328274017e-08 | 1.1357385032439993e-09 | General caution | Pedestrians |
+| yield.jpg | 1.0 | 3.772339782114678e-27 | 1.0180042625614068e-32 | 1.9832569671669157e-33 | 1.2764627722788207e-34 | Yield | Speed limit (30km/h) |
 
 The pedestrians.jpg was mis-predicted as "General Caution". Comparing images of
 the two signs, it appeared that the model was confused pedestrian with the exclamation mark.
