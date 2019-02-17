@@ -129,21 +129,22 @@ The model was able to correctly predict 5 out of 6 traffic signs, which gives an
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The top-5 softmax probabilities and class names for each image are printed in the Jupyter notebook.
+The top-5 softmax probabilities and class names for each image are computed as follows.
 
-| no-entry.jpg | 1.0 | 3.7178788693525977e-13 | 1.2487274037055666e-17 | 8.548082026742287e-21 | 5.472243634603315e-21 | No entry | Stop |
-| pedestrians.jpg | 0.9986525774002075 | 0.0013460007030516863 | 4.7523400326099363e-07 | 3.26870321032402e-07 | 3.013022933373577e-07 | General caution | Pedestrians |
-| speed-limit-30.jpeg | 0.9976346492767334 | 0.002359142992645502 | 3.368551688254229e-06 | 2.2627618818660267e-06 | 4.24117558850412e-07 | Speed limit (30km/h) | Speed limit (80km/h) |
-| stop_sign.jpg | 1.0 | 1.1655912679486846e-08 | 4.561031108352154e-09 | 5.856599649689542e-10 | 3.8162795146234885e-10 | Stop | Speed limit (80km/h) |
-| warning.png | 0.9999949932098389 | 4.098328645341098e-06 | 9.309649726674252e-07 | 1.486771328274017e-08 | 1.1357385032439993e-09 | General caution | Pedestrians |
-| yield.jpg | 1.0 | 3.772339782114678e-27 | 1.0180042625614068e-32 | 1.9832569671669157e-33 | 1.2764627722788207e-34 | Yield | Speed limit (30km/h) |
+name | prob_0 | prob_1 | prob_2 | prob_3 | prob_4 | class_0 | class_1
+--- | --- | --- | --- | --- | --- | --- | ---
+no-entry.jpg | 1 | 9.12e-24 | 8.8e-26 | 6.67e-28 | 1.42e-29 | No entry | Stop
+pedestrians.jpg | 0.746 | 0.243 | 0.0108 | 5.85e-07 | 3.47e-07 | General caution | Pedestrians
+speed-limit-30.jpeg | 0.999 | 0.00137 | 2.57e-06 | 7.89e-09 | 4.79e-09 | Speed limit (30km/h) | Speed limit (80km/h)
+stop_sign.jpg | 1 | 1.44e-07 | 1.14e-07 | 2.74e-08 | 2.3e-08 | Stop | Bicycles crossing
+warning.png | 0.999 | 0.00069 | 0.000183 | 8.49e-07 | 5.91e-09 | General caution | Pedestrians
+yield.jpg | 1 | 1.21e-26 | 8.05e-27 | 4.6e-27 | 4.04e-27 | Yield | No vehicles
+
+![Top softmax](top_sofmax_bars.png)
 
 The pedestrians.jpg was mis-predicted as "General Caution". Comparing images of
 the two signs, it appeared that the model was confused pedestrian with the exclamation mark.
 
-For "speed-limit-30.jpeg", the top probability is 94.5% and the second top
-probability is 5.5% with class "Speed limit (80km/h)". This implies that the
-model is not that certain in predicting the actual speed limit.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
